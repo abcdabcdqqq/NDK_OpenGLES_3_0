@@ -39,6 +39,7 @@ import android.widget.Toast;
 import com.byteflow.app.adapter.MyRecyclerViewAdapter;
 import com.byteflow.app.audio.AudioCollector;
 import com.byteflow.app.egl.EGLActivity;
+import com.byteflow.app.utils.MyLog;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -186,7 +187,8 @@ public class MainActivity extends AppCompatActivity implements AudioCollector.Ca
 
     private MyGLSurfaceView mGLSurfaceView;
     private ViewGroup mRootView;
-    private int mSampleSelectedIndex = SAMPLE_TYPE_KEY_BEATING_HEART - SAMPLE_TYPE;
+    private int mSampleSelectedIndex = SAMPLE_TYPE_KEY_BEATING_HEART - SAMPLE_TYPE; // 当前 显示哪个demo  效果 // 右上角可以选择哪一个演示效果
+
     private AudioCollector mAudioCollector;
     private MyGLRender mGLRender = new MyGLRender();
     private SensorManager mSensorManager;
@@ -271,9 +273,9 @@ public class MainActivity extends AppCompatActivity implements AudioCollector.Ca
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        MyLog.debuge("id="+id);
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_change_sample) {
+        if (id == R.id.action_change_sample) {// 右上角iteam
             showGLSampleDialog();
         }
         return true;
@@ -327,6 +329,7 @@ public class MainActivity extends AppCompatActivity implements AudioCollector.Ca
         myPreviewSizeViewAdapter.addOnItemClickListener(new MyRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                MyLog.debuge("onItemClick() called with: position = [" + position + "]");
                 mRootView.removeView(mGLSurfaceView);
                 RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

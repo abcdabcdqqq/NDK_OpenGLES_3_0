@@ -5,6 +5,7 @@
 #include "TriangleSample.h"
 #include "../util/GLUtils.h"
 #include "../util/LogUtil.h"
+#include "log.h"
 
 TriangleSample::TriangleSample()
 {
@@ -40,7 +41,7 @@ void TriangleSample::Init()
 			"out vec4 fragColor;                          \n"
 			"void main()                                  \n"
 			"{                                            \n"
-			"   fragColor = vec4 ( 1.0, 0.0, 0.0, 1.0 );  \n"
+			"   fragColor = vec4 ( 1.0, 1.0, 0.0, 1.0 );  \n"
 			"}                                            \n";
 
 	m_ProgramObj = GLUtils::CreateProgram(vShaderStr, fShaderStr, m_VertexShader, m_FragmentShader);
@@ -49,7 +50,7 @@ void TriangleSample::Init()
 
 void TriangleSample::Draw(int screenW, int screenH)
 {
-	LOGCATE("TriangleSample::Draw");
+	LOGD("TriangleSample::Draw screenW[%d] screenH[%d]",screenW,screenH);
 	GLfloat vVertices[] = {
 			0.0f,  0.5f, 0.0f,
 			-0.5f, -0.5f, 0.0f,
@@ -60,7 +61,7 @@ void TriangleSample::Draw(int screenW, int screenH)
 		return;
 
 	glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClearColor(0.0, 1.0, 1.0, 1.0);// 这里给的是背景色，这个背景色上面再有一个三角形图像
 
 	// Use the program object
 	glUseProgram (m_ProgramObj);

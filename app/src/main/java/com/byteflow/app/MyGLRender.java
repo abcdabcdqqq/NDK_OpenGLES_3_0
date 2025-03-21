@@ -10,6 +10,8 @@ import static com.byteflow.app.MyNativeRender.SAMPLE_TYPE;
 import static com.byteflow.app.MyNativeRender.SAMPLE_TYPE_SET_GRAVITY_XY;
 import static com.byteflow.app.MyNativeRender.SAMPLE_TYPE_SET_TOUCH_LOC;
 
+import com.byteflow.app.utils.MyLog;
+
 public class MyGLRender implements GLSurfaceView.Renderer {
     private static final String TAG = "MyGLRender";
     private MyNativeRender mNativeRender;
@@ -49,6 +51,7 @@ public class MyGLRender implements GLSurfaceView.Renderer {
         if (paramType == SAMPLE_TYPE) {
             mSampleType = value0;
         }
+        MyLog.debuge("paramtype = " + paramType + " value0 = " + value0 + " value1 = " + value1);
         mNativeRender.native_SetParamsInt(paramType, value0, value1);
     }
 

@@ -101,13 +101,13 @@ MyGLRenderContext::~MyGLRenderContext()
 
 void MyGLRenderContext::SetParamsInt(int paramType, int value0, int value1)
 {
-	LOGCATE("MyGLRenderContext::SetParamsInt paramType = %d, value0 = %d, value1 = %d", paramType, value0, value1);
+	LOGD("MyGLRenderContext::SetParamsInt paramType = %d, value0 = %d, value1 = %d", paramType, value0, value1);
 
 	if (paramType == SAMPLE_TYPE)
 	{
 		m_pBeforeSample = m_pCurSample;
 
-		LOGCATE("MyGLRenderContext::SetParamsInt 0 m_pBeforeSample = %p", m_pBeforeSample);
+		LOGD("MyGLRenderContext::SetParamsInt 0 m_pBeforeSample = %p", m_pBeforeSample);
 
 		switch (value0)
 		{
@@ -293,12 +293,12 @@ void MyGLRenderContext::SetParamsInt(int paramType, int value0, int value1)
 				break;
 		}
 
-		LOGCATE("MyGLRenderContext::SetParamsInt m_pBeforeSample = %p, m_pCurSample=%p", m_pBeforeSample, m_pCurSample);
+		LOGD("MyGLRenderContext::SetParamsInt m_pBeforeSample = %p, m_pCurSample=%p", m_pBeforeSample, m_pCurSample);
 	}
 }
 
 void MyGLRenderContext::SetParamsFloat(int paramType, float value0, float value1) {
-	LOGCATE("MyGLRenderContext::SetParamsFloat paramType=%d, value0=%f, value1=%f", paramType, value0, value1);
+	LOGD("MyGLRenderContext::SetParamsFloat paramType=%d, value0=%f, value1=%f", paramType, value0, value1);
 	if(m_pCurSample)
 	{
 		switch (paramType)
@@ -318,7 +318,7 @@ void MyGLRenderContext::SetParamsFloat(int paramType, float value0, float value1
 }
 
 void MyGLRenderContext::SetParamsShortArr(short *const pShortArr, int arrSize) {
-	LOGCATE("MyGLRenderContext::SetParamsShortArr pShortArr=%p, arrSize=%d, pShortArr[0]=%d", pShortArr, arrSize, pShortArr[0]);
+	LOGD("MyGLRenderContext::SetParamsShortArr pShortArr=%p, arrSize=%d, pShortArr[0]=%d", pShortArr, arrSize, pShortArr[0]);
 	if(m_pCurSample)
 	{
 		m_pCurSample->LoadShortArrData(pShortArr, arrSize);
@@ -328,7 +328,7 @@ void MyGLRenderContext::SetParamsShortArr(short *const pShortArr, int arrSize) {
 
 void MyGLRenderContext::UpdateTransformMatrix(float rotateX, float rotateY, float scaleX, float scaleY)
 {
-	LOGCATE("MyGLRenderContext::UpdateTransformMatrix [rotateX, rotateY, scaleX, scaleY] = [%f, %f, %f, %f]", rotateX, rotateY, scaleX, scaleY);
+	LOGD("MyGLRenderContext::UpdateTransformMatrix [rotateX, rotateY, scaleX, scaleY] = [%f, %f, %f, %f]", rotateX, rotateY, scaleX, scaleY);
 	if (m_pCurSample)
 	{
 		m_pCurSample->UpdateTransformMatrix(rotateX, rotateY, scaleX, scaleY);
@@ -337,7 +337,7 @@ void MyGLRenderContext::UpdateTransformMatrix(float rotateX, float rotateY, floa
 
 void MyGLRenderContext::SetImageDataWithIndex(int index, int format, int width, int height, uint8_t *pData)
 {
-	LOGCATE("MyGLRenderContext::SetImageDataWithIndex index=%d, format=%d, width=%d, height=%d, pData=%p", index, format, width, height, pData);
+	LOGD("MyGLRenderContext::SetImageDataWithIndex index=%d, format=%d, width=%d, height=%d, pData=%p", index, format, width, height, pData);
 	NativeImage nativeImage;
 	nativeImage.format = format;
 	nativeImage.width = width;
@@ -367,7 +367,7 @@ void MyGLRenderContext::SetImageDataWithIndex(int index, int format, int width, 
 
 void MyGLRenderContext::SetImageData(int format, int width, int height, uint8_t *pData)
 {
-	LOGCATE("MyGLRenderContext::SetImageData format=%d, width=%d, height=%d, pData=%p", format, width, height, pData);
+	LOGD("MyGLRenderContext::SetImageData format=%d, width=%d, height=%d, pData=%p", format, width, height, pData);
 	NativeImage nativeImage;
 	nativeImage.format = format;
 	nativeImage.width = width;
@@ -397,13 +397,13 @@ void MyGLRenderContext::SetImageData(int format, int width, int height, uint8_t 
 
 void MyGLRenderContext::OnSurfaceCreated()
 {
-	LOGCATE("MyGLRenderContext::OnSurfaceCreated");
+	LOGD("MyGLRenderContext::OnSurfaceCreated");
 	glClearColor(1.0f,1.0f,1.0f, 1.0f);
 }
 
 void MyGLRenderContext::OnSurfaceChanged(int width, int height)
 {
-	LOGCATE("MyGLRenderContext::OnSurfaceChanged [w, h] = [%d, %d]", width, height);
+	LOGD("MyGLRenderContext::OnSurfaceChanged [w, h] = [%d, %d]", width, height);
 	glViewport(0, 0, width, height);
 	m_ScreenW = width;
 	m_ScreenH = height;
@@ -440,7 +440,7 @@ MyGLRenderContext *MyGLRenderContext::GetInstance()
 
 void MyGLRenderContext::DestroyInstance()
 {
-	LOGCATE("MyGLRenderContext::DestroyInstance");
+	LOGD("MyGLRenderContext::DestroyInstance");
 	if (m_pContext)
 	{
 		delete m_pContext;

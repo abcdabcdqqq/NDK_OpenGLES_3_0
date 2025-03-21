@@ -1,5 +1,6 @@
 #include "GLUtils.h"
 #include "LogUtil.h"
+#include "log.h"
 #include <stdlib.h>
 #include <cstring>
 #include <GLES2/gl2ext.h>
@@ -7,7 +8,7 @@
 GLuint GLUtils::LoadShader(GLenum shaderType, const char *pSource)
 {
     GLuint shader = 0;
-	FUN_BEGIN_TIME("GLUtils::LoadShader")
+	LOGD("GLUtils::LoadShader")
         shader = glCreateShader(shaderType);
         if (shader)
         {
@@ -33,14 +34,14 @@ GLuint GLUtils::LoadShader(GLenum shaderType, const char *pSource)
                 }
             }
         }
-	FUN_END_TIME("GLUtils::LoadShader")
+    LOGD("GLUtils::LoadShader");
 	return shader;
 }
 
 GLuint GLUtils::CreateProgram(const char *pVertexShaderSource, const char *pFragShaderSource, GLuint &vertexShaderHandle, GLuint &fragShaderHandle)
 {
     GLuint program = 0;
-    FUN_BEGIN_TIME("GLUtils::CreateProgram")
+    LOGD("GLUtils::CreateProgram");
         vertexShaderHandle = LoadShader(GL_VERTEX_SHADER, pVertexShaderSource);
         if (!vertexShaderHandle) return program;
         fragShaderHandle = LoadShader(GL_FRAGMENT_SHADER, pFragShaderSource);
@@ -81,15 +82,15 @@ GLuint GLUtils::CreateProgram(const char *pVertexShaderSource, const char *pFrag
                 program = 0;
             }
         }
-    FUN_END_TIME("GLUtils::CreateProgram")
-    LOGCATE("GLUtils::CreateProgram program = %d", program);
+    LOGD("GLUtils::CreateProgram");
+    LOGD("GLUtils::CreateProgram program = %d", program);
 	return program;
 }
 
 GLuint GLUtils::CreateProgramWithFeedback(const char *pVertexShaderSource, const char *pFragShaderSource, GLuint &vertexShaderHandle, GLuint &fragShaderHandle, GLchar const **varying, int varyingCount)
 {
     GLuint program = 0;
-    FUN_BEGIN_TIME("GLUtils::CreateProgramWithFeedback")
+    LOGD("GLUtils::CreateProgramWithFeedback")
         vertexShaderHandle = LoadShader(GL_VERTEX_SHADER, pVertexShaderSource);
         if (!vertexShaderHandle) return program;
 
@@ -136,8 +137,8 @@ GLuint GLUtils::CreateProgramWithFeedback(const char *pVertexShaderSource, const
                 program = 0;
             }
         }
-    FUN_END_TIME("GLUtils::CreateProgramWithFeedback")
-    LOGCATE("GLUtils::CreateProgramWithFeedback program = %d", program);
+    LOGD("GLUtils::CreateProgramWithFeedback");
+    LOGD("GLUtils::CreateProgramWithFeedback program = %d", program);
     return program;
 }
 
