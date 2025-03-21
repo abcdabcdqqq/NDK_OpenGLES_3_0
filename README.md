@@ -154,3 +154,10 @@
 
 ![知识星球](https://github.com/githubhaohao/NDK_OpenGLES_3_0/blob/master/doc/img/zsxq.jpeg?raw=true)
 
+
+
+##  本人编译配置
+
+
+![img.png](mdpng/img.png)
+![img_1.png](mdpng/img_1.png)
