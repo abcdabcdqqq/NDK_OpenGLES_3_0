@@ -8,6 +8,7 @@ cmake_minimum_required(VERSION 3.4.1)
 set(jnilibs "${CMAKE_SOURCE_DIR}/../jniLibs")
 
 include_directories(
+        yfutils
         util
         render
         sample

@@ -9,6 +9,8 @@
 #include <gtc/matrix_transform.hpp>
 #include "BeatingHeartSample.h"
 #include "../util/GLUtils.h"
+#include "log.h"
+
 
 BeatingHeartSample::BeatingHeartSample()
 {
@@ -176,7 +178,7 @@ void BeatingHeartSample::LoadImage(NativeImage *pImage)
 
 void BeatingHeartSample::Draw(int screenW, int screenH)
 {
-	LOGCATE("BeatingHeartSample::Draw()");
+	LOGD("BeatingHeartSample::Draw()");
 
 	if(m_ProgramObj == GL_NONE) return;
 
@@ -195,7 +197,7 @@ void BeatingHeartSample::Draw(int screenW, int screenH)
 
 	glUniformMatrix4fv(m_MVPMatLoc, 1, GL_FALSE, &m_MVPMatrix[0][0]);
 	float time = static_cast<float>(fmod(GetSysCurrentTime(), 2000) / 2000);
-    LOGCATE("BeatingHeartSample::Draw() time=%f",time);
+    LOGD("BeatingHeartSample::Draw() time=%f",time);
 	glUniform1f(m_TimeLoc, time);
     glUniform2f(m_SizeLoc, screenW, screenH);
 //	// Bind the RGBA map

@@ -72,6 +72,8 @@
 #include "FullScreenTriangleSample.h"
 //#include "HardwareBufferExample.h"
 
+#include "log.h"
+
 MyGLRenderContext* MyGLRenderContext::m_pContext = nullptr;
 
 MyGLRenderContext::MyGLRenderContext()
@@ -409,7 +411,7 @@ void MyGLRenderContext::OnSurfaceChanged(int width, int height)
 
 void MyGLRenderContext::OnDrawFrame()
 {
-	LOGCATE("MyGLRenderContext::OnDrawFrame");
+	LOGD("MyGLRenderContext::OnDrawFrame");
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
 	if (m_pBeforeSample)
@@ -428,7 +430,7 @@ void MyGLRenderContext::OnDrawFrame()
 
 MyGLRenderContext *MyGLRenderContext::GetInstance()
 {
-	LOGCATE("MyGLRenderContext::GetInstance");
+	LOGD("MyGLRenderContext::GetInstance");
 	if (m_pContext == nullptr)
 	{
 		m_pContext = new MyGLRenderContext();
